@@ -99,8 +99,6 @@
 
     <title>Nabi (집고양이 나비)</title>
     <identifier>PET-2026-042</identifier>
-    <title>Nabi (집고양이 나비)</title>
-    <identifier>PET-2026-042</identifier>
     <scientificName>Felis catus</scientificName>
     <breed>Mixed Breed</breed>
     <domesticationStatus>Domesticated</domesticationStatus>
