@@ -93,17 +93,19 @@
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<catRecord xmlns="[http://example.org/cat/schema/](http://example.org/cat/schema/)"
-           xmlns:xsi="[http://www.w3.org/2001/XMLSchema-instance](http://www.w3.org/2001/XMLSchema-instance)"
-           xsi:schemaLocation="[http://example.org/cat/schema/](http://example.org/cat/schema/) cat_schema.xsd">
+<catRecord xmlns="http://example.org/cat/schema/"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://example.org/cat/schema/ cat_schema.xsd">
 
+    <title>Nabi (집고양이 나비)</title>
+    <identifier>PET-2026-042</identifier>
     <title>Nabi (집고양이 나비)</title>
     <identifier>PET-2026-042</identifier>
     <scientificName>Felis catus</scientificName>
     <breed>Mixed Breed</breed>
     <domesticationStatus>Domesticated</domesticationStatus>
     <physicalState>Living Organism</physicalState>
-    <agent>Oh Yun-ju (Owner)</agent>
+    <agent>Oh Yoonju (Owner)</agent>
     <currentLocation>Seoul, South Korea</currentLocation>
     <medicalStatus>Healthy, Indoor status</medicalStatus>
     <rights>Private Personal Data. All rights reserved by the owner.</rights>
@@ -127,9 +129,9 @@
 설명: 역사적 유물이자 인공물(Artifact)로서의 데이터를 증명하는 레코드입니다. 보존 환경(medicalStatus 요소의 유연한 전용), 전시 정보(socialPresence), 기원전 기원 및 미라화 과정에 대한 역사적 이력이 깨짐 없이 완벽히 유효성 검증을 통과합니다.
 
 <?xml version="1.0" encoding="UTF-8"?>
-<catRecord xmlns="[http://example.org/cat/schema/](http://example.org/cat/schema/)"
-           xmlns:xsi="[http://www.w3.org/2001/XMLSchema-instance](http://www.w3.org/2001/XMLSchema-instance)"
-           xsi:schemaLocation="[http://example.org/cat/schema/](http://example.org/cat/schema/) cat_schema.xsd">
+<catRecord xmlns="http://example.org/cat/schema/"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://example.org/cat/schema/ cat_schema.xsd">
 
     <title>Ancient Egyptian Cat Mummy</title>
     <identifier>ARC-2026-M09</identifier>
