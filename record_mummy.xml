@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catRecord xmlns="http://example.org/cat/schema/"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://example.org/cat/schema/ cat_schema.xsd">
+
+    <title>Ancient Egyptian Cat Mummy</title>
+    <identifier>ARC-2026-M09</identifier>
+    <scientificName>Felis catus</scientificName>
+    <breed>Domestic Short Hair</breed>
+    <domesticationStatus>Domesticated</domesticationStatus>
+    <physicalState>Organic Artifact / Desiccated Remains</physicalState>
+    <agent>Free Museum of Antiquities (Current Custodian)</agent>
+    <currentLocation>Gallery 3, Case B - Egyptian Antiquities Wing</currentLocation>
+    <medicalStatus>Stable, preserved in low-humidity vitrine</medicalStatus>
+    <socialPresence>Exhibition Catalog Entry ID: #EGY-CAT-332</socialPresence>
+    <rights>Copyright © 2026 Free Museum of Antiquities. Licensed under CC BY-NC 4.0.</rights>
+    
+    <provenanceHistory>
+        <provenanceEvent>
+            <eventType>Mummification</eventType>
+            <eventDateTime>c. 332 BC</eventDateTime>
+            <eventDetail>Location: Abydos, Egypt. Ritual votive offering preparation.</eventDetail>
+        </provenanceEvent>
+    </provenanceHistory>
+
+</catRecord>

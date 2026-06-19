@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catRecord xmlns="http://example.org/cat/schema/"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://example.org/cat/schema/ cat_schema.xsd">
+
+    <title>Nabi (집고양이 나비)</title>
+    <identifier>PET-2026-042</identifier>
+    <scientificName>Felis catus</scientificName>
+    <breed>Mixed Breed</breed>
+    <domesticationStatus>Domesticated</domesticationStatus>
+    <physicalState>Living Organism</physicalState>
+    <agent>Oh Yun-ju (Owner)</agent>
+    <currentLocation>Seoul, South Korea</currentLocation>
+    <medicalStatus>Healthy, Indoor status</medicalStatus>
+    <rights>Private Personal Data. All rights reserved by the owner.</rights>
+    
+    <provenanceHistory>
+        <provenanceEvent>
+            <eventType>Rescue</eventType>
+            <eventDateTime>2024-05-12</eventDateTime>
+            <eventDetail>Rescued near Mapo-gu street alleyways.</eventDetail>
+        </provenanceEvent>
+        <provenanceEvent>
+            <eventType>Adoption</eventType>
+            <eventDateTime>2024-06-01</eventDateTime>
+            <eventDetail>Officially adopted into the current household.</eventDetail>
+        </provenanceEvent>
+    </provenanceHistory>
+
+</catRecord>

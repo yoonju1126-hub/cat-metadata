@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ========================================================================
+  [Design Intent & AI Usage Comment]
+  - Designer: Oh Yoonju (오윤주)
+  - Purpose: A unified metadata schema encompassing reality, history, and intellectual property of cats.
+  - Structure Strategy: Adopts a wrapper structure inspired by VRA Core to cleanly separate Core data from optional 
+    extensible modules, preventing schema bloating while managing high domain diversity.
+  - AI Assistant Usage: Google Gemini was used to scaffold the boilerplate XSD syntax and map standard prefixes 
+    (dc, dwc, premis). To bypass strict local VS Code IDE network/proxy firewall errors blocking remote XSD fetches 
+    and avoid the clutter of multiple local support files, external elements are strictly bound within the local 
+    schema framework using standard namespace semantics. Modifications were made manually to replace 'dwc:taxonRank' 
+    with a localized 'breed' element, and to convert flat inline event syntax into a machine-validatable nested sequence.
+  ========================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.org/cat/schema/"
+           xmlns="http://example.org/cat/schema/"
+           elementFormDefault="qualified">
+
+  <!-- ======================================================================== -->
+  <!-- CONTROLLED VOCABULARIES (Simple Types)                                   -->
+  <!-- ======================================================================== -->
+  <xs:simpleType name="domesticationStatusType">
+    <xs:annotation>
+      <xs:documentation>Controlled vocabulary defining the 4-way scope of reality, history, and fiction.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Domesticated"/>
+      <xs:enumeration value="Feral"/>
+      <xs:enumeration value="Wild"/>
+      <xs:enumeration value="Fictional"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ======================================================================== -->
+  <!-- ROOT ELEMENT DECLARATION                                                 -->
+  <!-- ======================================================================== -->
+  <xs:element name="catRecord">
+    <xs:annotation>
+      <xs:documentation>The root wrapper for a unified cat metadata object record.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        
+        <!-- Element 1: Name (Maps to dc:title) -->
+        <xs:element name="title" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The primary name or title assigned to the specific cat object. Standard alignment: dc:title.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Element 2: Identifier -->
+        <xs:element name="identifier" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>A unique control number or string for local identification.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Element 3: Scientific Name (Maps to dwc:scientificName) -->
+        <xs:element name="scientificName" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Standard Linnaean biological classification of the entity. Standard alignment: dwc:scientificName.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Element 4: Breed / Variant (ex:breed) -->
+        <!-- Design Intent: Created locally because dwc:taxonRank is biologically restricted to levels above breed. -->
+        <xs:element name="breed" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>The localized breed or physical variety name (e.g., Munchkin, Domestic Short Hair).</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Element 5: Domestication Status -->
+        <xs:element name="domesticationStatus" type="domesticationStatusType">
+          <xs:annotation>
+            <xs:documentation>Captures whether the entity is domesticated, wild, feral, or completely fictional.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Element 6: Physical State / Material -->
+        <xs:element name="physicalState" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Describes whether the entity is a living organism, an artifact (mummy), or a digital asset.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Element 7: Agent -->
+        <xs:element name="agent" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>An associated person, institution, creator, or entity linked to the object.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Element 8: Current Location -->
+        <xs:element name="currentLocation" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>The physical or institutional location of the object at present.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Element 9: Medical Status -->
+        <xs:element name="medicalStatus" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Summarized ongoing health condition or preservation status of physical objects.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Element 10: Social / Digital Presence -->
+        <xs:element name="socialPresence" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Handles, licensing, and metadata related to media or influencer capabilities.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Element 11: Rights (Maps to dc:rights) -->
+        <xs:element name="rights" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Copyright and intellectual property statements associated with the record. Standard alignment: dc:rights.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Element 12: Provenance Events (PREMIS) -->
+        <!-- Design Intent: Structured nesting of life/administrative events to prevent schema bloating. -->
+        <xs:element name="provenanceHistory" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="provenanceEvent" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="eventType" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>Type of action (e.g., Mummification, Rescue, Adoption). Maps to premis:eventType.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="eventDateTime" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>The temporal marker of when the event transpired. Maps to premis:eventDateTime.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="eventDetail" type="xs:string" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Granular notes, locations, or descriptions relevant to the specific event.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
